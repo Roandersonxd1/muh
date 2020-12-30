@@ -1,0 +1,44 @@
+version: v1.0
+name: First pipeline
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Build
+    task:
+      prologue:
+        commands:
+          - checkout
+      jobs:
+        - name: Make gradlew executable
+          commands:
+            - checkout
+            - sudo chmod +x ./gradlew
+        - name: Install dependencies
+          commands:
+            - checkout
+            - ./gradlew androidDependencies
+        - name: Build Project
+          commands:
+            - checkout
+            - ./gradlew bundle
+  - name: Verification
+    task:
+      prologue:
+        commands:
+          - checkout
+      jobs:
+        - name: Analyze Code
+          commands:
+            - checkout
+            - ./gradlew lint
+        - name: KTLINT
+          commands:
+            - checkout
+            - 'curl -sSLO https://github.com/pinterest/ktlint/releases/download/0.39.0/ktlint && chmod a+x ktlint && sudo mv ktlint /usr/local/bin'
+            - ktlint
+        - name: Unit Tests
+          commands:
+            - checkout
+            - ./gradlew test
