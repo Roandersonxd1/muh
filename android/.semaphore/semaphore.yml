@@ -1,0 +1,51 @@
+version: v1.0
+name: Android
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+  containers:
+    - name: main
+      image: 'registry.semaphoreci.com/android:29'
+blocks:
+  - name: Build
+    task:
+      jobs:
+        - name: Make gradlew executable
+          commands:
+            - checkout
+            - sudo chmod +x ./gradlew
+        - name: Install dependencies
+          commands:
+            - checkout
+            - ./gradlew androidDependencies
+        - name: Build Project
+          commands:
+            - checkout
+            - ./gradlew bundle
+      epilogue:
+        on_pass:
+          commands:
+            - checkout
+            - cache clear
+            - cache store gradle-wrapper ~/.gradle/wrapper
+            - cache store gradle-cache ~/.gradle/caches
+            - cache store android-build ~/.android/build-cache
+  - name: Verification
+    task:
+      jobs:
+        - name: Analyze Code
+          commands:
+            - checkout
+            - ./gradlew lint
+        - name: KTLINT
+          commands:
+            - checkout
+            - 'curl -sSLO https://github.com/pinterest/ktlint/releases/download/0.39.0/ktlint &&
+            chmod a+x ktlint &&
+            sudo mv ktlint /usr/local/bin'
+            - ktlint
+        - name: Unit Tests
+          commands:
+            - checkout
+            - ./gradlew test
