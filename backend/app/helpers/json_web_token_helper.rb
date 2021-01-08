@@ -3,7 +3,7 @@
 module JsonWebTokenHelper
   SECRET_KEY = 'super_secret_key'
 
-  def encode_user(user, exp = 24.hours.from_now)
+  def encode_user(user, exp = 1.day.from_now)
     payload = {}
     payload[:exp] = exp.to_i
     payload[:user_id] = user.id
