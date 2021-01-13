@@ -16,5 +16,5 @@ blocks:
             - heroku container:push web --recursive -a=muhos
             - heroku container:release web -a=muhos
             - heroku run rails db:migrate db:seed -a=muhos
-    secrets:
-        - name: muh-secrets
+      secrets:
+          - name: muh-secrets
