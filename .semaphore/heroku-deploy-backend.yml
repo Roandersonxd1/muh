@@ -17,4 +17,4 @@ blocks:
             - heroku container:release web -a=muhos
             - heroku run rails db:migrate db:seed -a=muhos
     secrets:
-        - name: heroku-secret
+        - name: muh-secrets

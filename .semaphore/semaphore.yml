@@ -20,6 +20,9 @@ blocks:
             - 'docker-compose exec muh_rails_server rake db:create db:migrate'
             - docker-compose exec muh_rails_server rubocop
             - docker-compose exec muh_rails_server rspec
+    secrets:
+        - name: muh-secrets
+
   - name: Android
     dependencies: []
     task:
