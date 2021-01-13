@@ -11,6 +11,7 @@ blocks:
       jobs:
         - name: 'deploy'
           commands:
+            - checkout
             - 'curl https://cli-assets.heroku.com/install.sh | sh'
             - heroku container:login
             - heroku container:push web --recursive -a=muhos
