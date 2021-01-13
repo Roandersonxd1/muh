@@ -15,6 +15,7 @@ blocks:
               when: branch != 'main'
           commands:
             - checkout
+            - echo $DOCKER_PASSWORD | docker login --username "$DOCKER_USERNAME" --password-stdin
             - docker-compose up -d muh_rails_server
             - 'docker-compose exec muh_rails_server rake db:create db:migrate'
             - docker-compose exec muh_rails_server rubocop
