@@ -44,3 +44,6 @@ blocks:
             - docker-compose exec muh_android ./ktlint
             - docker-compose up -d muh_android
             - docker-compose exec muh_android ./gradlew test
+promotions:
+  - name: Heroku deploy backend
+    pipeline_file: heroku-deploy-backend.yml
