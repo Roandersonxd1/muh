@@ -28,7 +28,7 @@ RSpec.describe Mutations::UpdateCategory, type: :request do
     end
 
     it 'returns invalid input message' do
-      expect(json_response_error_message).to eq("Invalid input: Name can't be blank")
+      expect(json_response_error_message).to eq("Validation failed: Name can't be blank")
     end
   end
 
@@ -38,7 +38,7 @@ RSpec.describe Mutations::UpdateCategory, type: :request do
     end
 
     it 'returns invalid input message' do
-      expect(json_response_error_message).to eq('Category not found with id -1.')
+      expect(json_response_error_message).to eq("Couldn't find Category with 'id'=-1")
     end
   end
 

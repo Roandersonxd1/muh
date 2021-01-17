@@ -26,7 +26,7 @@ RSpec.describe Queries::FetchCategories, type: :request do
     end
 
     it 'returns not found message' do
-      expect(json_response_error_message).to eq('Category not found with id -1.')
+      expect(json_response_error_message).to eq("Couldn't find Category with 'id'=-1")
     end
   end
 

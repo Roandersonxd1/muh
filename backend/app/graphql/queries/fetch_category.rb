@@ -6,8 +6,6 @@ module Queries
 
     def resolve(id:)
       Category.find(id)
-    rescue ActiveRecord::RecordNotFound => _e
-      GraphQL::ExecutionError.new("Category not found with id #{id}.")
     end
   end
 end

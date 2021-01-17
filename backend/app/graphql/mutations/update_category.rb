@@ -9,10 +9,6 @@ module Mutations
       category = Category.find(id)
       category.update!(name: name)
       category
-    rescue ActiveRecord::RecordNotFound => _e
-      GraphQL::ExecutionError.new("Category not found with id #{id}.")
-    rescue ActiveRecord::RecordInvalid => e
-      GraphQL::ExecutionError.new("Invalid input: #{e.record.errors.full_messages.join(', ')}")
     end
   end
 end
