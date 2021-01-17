@@ -3,17 +3,16 @@ require 'rails_helper'
 RSpec.describe Queries::FetchCategories, type: :request do
   let!(:user) { create(:user) }
   let!(:user_headers) { header_for_user(user) }
-  let!(:category) { create_list(:category, 1, user: user)[0] }
+  let!(:category) { create(:category, user: user) }
 
   describe 'when data is valid' do
     before(:each) do
-      graphql_post(headers: user_headers)
+      graphql_post(id: category.id, headers: user_headers)
     end
 
-    it 'returns categories data' do
-      data = json_response('fetchCategories')
-      expect(data.length).to eq(1)
-      expect(data[0]).to include(
+    it 'returns category data' do
+      data = json_response('fetchCategory')
+      expect(data).to include(
         'id' => category.id.to_s,
         'name' => category.name,
         'userId' => user.id.to_s
@@ -21,10 +20,21 @@ RSpec.describe Queries::FetchCategories, type: :request do
     end
   end
 
-  def query
+  describe 'when data is valid' do
+    before(:each) do
+      graphql_post(id: -1, headers: user_headers)
+    end
+
+    it 'returns not found message' do
+      expect(json_response_error_message).to eq('Category not found with id -1.')
+    end
+  end
+
+
+  def query(id:)
     <<~GQL
       {
-        fetchCategories
+        fetchCategory(id:"#{id}")
         {
           id
           name
