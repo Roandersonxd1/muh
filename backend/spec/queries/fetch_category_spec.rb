@@ -30,7 +30,6 @@ RSpec.describe Queries::FetchCategories, type: :request do
     end
   end
 
-
   def query(id:)
     <<~GQL
       {

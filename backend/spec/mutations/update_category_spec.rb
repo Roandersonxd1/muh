@@ -38,7 +38,7 @@ RSpec.describe Mutations::UpdateCategory, type: :request do
     end
 
     it 'returns invalid input message' do
-      expect(json_response_error_message).to eq("Category not found with id -1.")
+      expect(json_response_error_message).to eq('Category not found with id -1.')
     end
   end
 

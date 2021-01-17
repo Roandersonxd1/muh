@@ -4,7 +4,7 @@ module Mutations
     type Types::CategoryType
 
     def resolve(id: nil)
-      category = Category.find_by!(id: id)
+      category = Category.find(id)
       category.destroy!
       category
     rescue ActiveRecord::RecordNotFound => _e

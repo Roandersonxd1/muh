@@ -20,8 +20,6 @@ RSpec.describe Mutations::DeleteCategory, type: :request do
       )
     end
     it 'deletes category' do
-      data = json_response('deleteCategory')
-
       expect(Category.count).to eq(0)
     end
   end

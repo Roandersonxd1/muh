@@ -5,7 +5,7 @@ module Queries
     type Types::CategoryType, null: false
 
     def resolve(id:)
-      Category.find_by!(id: id)
+      Category.find(id)
     rescue ActiveRecord::RecordNotFound => _e
       GraphQL::ExecutionError.new("Category not found with id #{id}.")
     end
