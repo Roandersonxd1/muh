@@ -1,13 +1,13 @@
-package com.example.myos.ui.ui.serviceorder
+package com.example.myos.ui.ui.category
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class ServiceOrderViewModel : ViewModel() {
+class CategoryViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "Ordem de serviço"
+        value = "Tela  de categorias"
     }
     val text: LiveData<String> = _text
 }

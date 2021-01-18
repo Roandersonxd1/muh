@@ -1,13 +1,13 @@
-package com.example.myos.ui.ui.gallery
+package com.example.myos.ui.ui.service
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class GalleryViewModel : ViewModel() {
+class ServiceViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is gallery Fragment"
+        value = "Tela  de serviços"
     }
     val text: LiveData<String> = _text
 }
