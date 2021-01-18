@@ -24,9 +24,12 @@ class CategoryFragment : Fragment() {
 
         val root = inflater.inflate(R.layout.fragment_category, container, false)
         val textView: TextView = root.findViewById(R.id.text_slideshow)
-        categoryViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        categoryViewModel.text.observe(
+            viewLifecycleOwner,
+            Observer {
+                textView.text = it
+            }
+        )
         return root
     }
 }

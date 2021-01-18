@@ -15,18 +15,21 @@ class ServiceFragment : Fragment() {
     private lateinit var serviceViewModel: ServiceViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         serviceViewModel =
-                ViewModelProvider(this).get(ServiceViewModel::class.java)
+            ViewModelProvider(this).get(ServiceViewModel::class.java)
 
         val root = inflater.inflate(R.layout.fragment_category, container, false)
         val textView: TextView = root.findViewById(R.id.text_slideshow)
-        serviceViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        serviceViewModel.text.observe(
+            viewLifecycleOwner,
+            Observer {
+                textView.text = it
+            }
+        )
         return root
     }
 }
