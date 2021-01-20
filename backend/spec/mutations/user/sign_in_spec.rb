@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Mutations::SignIn, type: :request do
+RSpec.describe Mutations::User::SignIn, type: :request do
   let(:correct_password) { 'secret1' }
   let!(:user) { create(:user, password: correct_password) }
 

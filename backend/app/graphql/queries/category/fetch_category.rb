@@ -1,4 +1,4 @@
-module Queries
+module Queries::Category
   class FetchCategory < Queries::BaseQuery
     argument :id, ID, required: true
 

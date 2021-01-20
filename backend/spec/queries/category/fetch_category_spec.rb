@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Queries::FetchCategories, type: :request do
+RSpec.describe Queries::Category::FetchCategories, type: :request do
   let!(:user) { create(:user) }
   let!(:user_headers) { header_for_user(user) }
   let!(:category) { create(:category, user: user) }

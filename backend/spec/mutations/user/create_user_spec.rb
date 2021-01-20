@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Mutations::CreateUser, type: :request do
+RSpec.describe Mutations::User::CreateUser, type: :request do
   describe 'when data is valid' do
     let(:valid_email) { 'email@gmail.com' }
     let(:valid_password) { 'secret' }

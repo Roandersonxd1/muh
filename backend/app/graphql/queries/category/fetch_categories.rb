@@ -1,4 +1,4 @@
-module Queries
+module Queries::Category
   class FetchCategories < Queries::BaseQuery
     type [Types::CategoryType], null: false
 
