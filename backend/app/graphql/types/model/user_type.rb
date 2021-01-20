@@ -1,5 +1,5 @@
 module Types::Model
-  class UserType < Types::Model::BaseObject
+  class UserType < BaseObject
     include JsonWebTokenHelper
 
     field :id, ID, null: false
