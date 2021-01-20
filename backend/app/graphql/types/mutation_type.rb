@@ -1,5 +1,5 @@
 module Types
-  class MutationType < Types::BaseObject
+  class MutationType < Types::Model::BaseObject
     field :create_category, mutation: Mutations::Category::CreateCategory
     field :update_category, mutation: Mutations::Category::UpdateCategory
     field :delete_category, mutation: Mutations::Category::DeleteCategory

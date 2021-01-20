@@ -1,5 +1,5 @@
 module Types
-  class QueryType < Types::BaseObject
+  class QueryType < Types::Model::BaseObject
     field :fetch_categories, resolver: Queries::Category::FetchCategories
     field :fetch_category, resolver: Queries::Category::FetchCategory
 
