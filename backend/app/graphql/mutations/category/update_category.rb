@@ -1,6 +1,7 @@
-module Mutations
-  class UpdateCategory < BaseMutation
+module Mutations::Category
+  class UpdateCategory < Mutations::BaseMutation
     argument :id, ID, required: true
+
     argument :name, String, required: true
 
     type Types::CategoryType

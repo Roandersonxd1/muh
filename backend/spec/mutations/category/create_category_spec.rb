@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Mutations::CreateCategory, type: :request do
+RSpec.describe Mutations::Category::CreateCategory, type: :request do
   let!(:user) { create(:user) }
   let!(:user_headers) { header_for_user(user) }
 

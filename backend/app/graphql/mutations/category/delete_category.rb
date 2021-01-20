@@ -1,6 +1,7 @@
-module Mutations
-  class DeleteCategory < BaseMutation
+module Mutations::Category
+  class DeleteCategory < Mutations::BaseMutation
     argument :id, ID, required: true
+
     type Types::CategoryType
 
     def resolve(id: nil)

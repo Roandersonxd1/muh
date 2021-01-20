@@ -1,5 +1,5 @@
-module Mutations
-  class CreateCategory < BaseMutation
+module Mutations::Category
+  class CreateCategory < Mutations::BaseMutation
     argument :name, String, required: true
 
     type Types::CategoryType
