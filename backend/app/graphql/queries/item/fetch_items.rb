@@ -1,4 +1,4 @@
-module Queries
+module Queries::Item
   class FetchItems < Queries::BaseQuery
     type [Types::ItemType], null: false
 

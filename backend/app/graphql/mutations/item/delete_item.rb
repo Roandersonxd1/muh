@@ -1,5 +1,5 @@
-module Mutations
-  class DeleteItem < BaseMutation
+module Mutations::Item
+  class DeleteItem < Mutations::BaseMutation
     argument :id, ID, required: true
     type Types::ItemType
 

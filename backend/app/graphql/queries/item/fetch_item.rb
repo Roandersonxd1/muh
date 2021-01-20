@@ -1,4 +1,4 @@
-module Queries
+module Queries::Item
   class FetchItem < Queries::BaseQuery
     argument :id, ID, required: true
 

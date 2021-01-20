@@ -1,5 +1,5 @@
-module Mutations
-  class CreateItem < BaseMutation
+module Mutations::Item
+  class CreateItem < Mutations::BaseMutation
     argument :name, String, required: true
     argument :item_type, String, required: true
     argument :description, String, required: true

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Mutations::DeleteItem, type: :request do
+RSpec.describe Mutations::Item::DeleteItem, type: :request do
   let!(:user) { create(:user) }
   let!(:user_headers) { header_for_user(user) }
   let!(:item) { create(:item, user: user) }

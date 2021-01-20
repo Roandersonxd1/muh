@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Queries::FetchItems, type: :request do
+RSpec.describe Queries::Item::FetchItems, type: :request do
   let!(:user) { create(:user) }
   let!(:user_headers) { header_for_user(user) }
   let!(:item) { create(:item, user: user) }
