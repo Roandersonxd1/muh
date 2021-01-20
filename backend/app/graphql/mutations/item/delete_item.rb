@@ -1,7 +1,7 @@
 module Mutations::Item
   class DeleteItem < Mutations::BaseMutation
     argument :id, ID, required: true
-    type Types::ItemType
+    type Types::Model::ItemType
 
     def resolve(id: nil)
       item = Item.find(id)

@@ -2,7 +2,7 @@ module Mutations::Category
   class CreateCategory < Mutations::BaseMutation
     argument :name, String, required: true
 
-    type Types::CategoryType
+    type Types::Model::CategoryType
 
     def resolve(name: nil)
       Category.create!(

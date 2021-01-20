@@ -1,6 +1,6 @@
 module Queries::Item
   class FetchItems < Queries::BaseQuery
-    type [Types::ItemType], null: false
+    type [Types::Model::ItemType], null: false
 
     def resolve
       Item.all

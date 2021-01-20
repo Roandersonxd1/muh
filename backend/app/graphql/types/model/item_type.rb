@@ -1,4 +1,4 @@
-module Types
+module Types::Model
   class ItemType < Types::BaseObject
     field :id, ID, null: false
     field :user_id, ID, null: false
@@ -8,6 +8,6 @@ module Types
     field :sale_price, Float, null: false
     field :purchase_price, Float, null: false
 
-    field :category, Types::CategoryType, null: true
+    field :category, Types::Model::CategoryType, null: true
   end
 end

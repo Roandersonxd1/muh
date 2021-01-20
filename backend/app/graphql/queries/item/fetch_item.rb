@@ -2,7 +2,7 @@ module Queries::Item
   class FetchItem < Queries::BaseQuery
     argument :id, ID, required: true
 
-    type Types::ItemType, null: false
+    type Types::Model::ItemType, null: false
 
     def resolve(id:)
       Item.find(id)

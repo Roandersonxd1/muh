@@ -7,7 +7,7 @@ module Mutations::Item
     argument :purchase_price, Float, required: true
     argument :category_id, ID, required: true
 
-    type Types::ItemType
+    type Types::Model::ItemType
 
     def resolve(params)
       item = Item.new(params)

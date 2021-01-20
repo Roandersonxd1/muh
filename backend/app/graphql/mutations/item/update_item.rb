@@ -8,7 +8,7 @@ module Mutations::Item
     argument :sale_price, Float, required: false
     argument :purchase_price, Float, required: false
 
-    type Types::ItemType
+    type Types::Model::ItemType
 
     def resolve(params)
       item = Item.find(params[:id])

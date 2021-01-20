@@ -1,4 +1,4 @@
-module Types
+module Types::Model
   class UserType < Types::BaseObject
     include JsonWebTokenHelper
 

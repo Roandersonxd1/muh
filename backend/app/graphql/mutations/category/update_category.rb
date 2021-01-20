@@ -4,7 +4,7 @@ module Mutations::Category
 
     argument :name, String, required: true
 
-    type Types::CategoryType
+    type Types::Model::CategoryType
 
     def resolve(id:, name:)
       category = Category.find(id)
