@@ -1,6 +1,6 @@
 class Customer < ApplicationRecord
-  MIN_PHONE_VALUE = 100000000
-  MAX_PHONE_VALUE = 99999999999
+  MIN_PHONE_VALUE = 100_000_000
+  MAX_PHONE_VALUE = 99_999_999_999
 
   belongs_to :user
 

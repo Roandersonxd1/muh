@@ -19,7 +19,7 @@ RSpec.describe Mutations::Customer::CreateCustomer, type: :request do
         'id' => be_present,
         'name' => name,
         'phone' => phone,
-        'email' => email,
+        'email' => email
       )
     end
   end

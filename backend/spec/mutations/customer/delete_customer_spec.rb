@@ -15,7 +15,7 @@ RSpec.describe Mutations::Customer::DeleteCustomer, type: :request do
 
       expect(data).to include(
         'id' => customer.id.to_s,
-        'name' => customer.name,
+        'name' => customer.name
       )
     end
 

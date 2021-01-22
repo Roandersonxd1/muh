@@ -16,7 +16,7 @@ RSpec.describe Queries::Customer::FetchCustomers, type: :request do
         'id' => customer.id.to_s,
         'name' => customer.name,
         'phone' => customer.phone.to_s,
-        'email' => customer.email,
+        'email' => customer.email
       )
     end
 
