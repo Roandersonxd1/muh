@@ -1,18 +1,21 @@
 module Mutations::Customer
-  class CreateCustomer < Mutations::BaseMutation
+  class UpdateCustomer < Mutations::BaseMutation
+    argument :id, ID, required: true
+
     argument :name, String, required: true
     argument :email, String, required: true
     argument :phone, GraphQL::Types::BigInt, required: true
 
     type Types::Model::CustomerType
 
-    def resolve(name:, phone:, email:)
-      Customer.create!(
+    def resolve(id:, name:, phone:, email:)
+      category = Customer.find_by!(id: id, user: current_user)
+      category.update!(
         name: name,
         phone: phone,
-        email: email,
-        user: context[:current_user]
+        email: email
       )
+      category
     end
   end
 end

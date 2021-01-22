@@ -9,6 +9,7 @@ module Types
     field :update_item, mutation: Mutations::Item::UpdateItem
 
     field :create_customer, mutation: Mutations::Customer::CreateCustomer
+    field :update_customer, mutation: Mutations::Customer::UpdateCustomer
 
     field :create_user, mutation: Mutations::User::CreateUser
     field :sign_in, mutation: Mutations::User::SignIn

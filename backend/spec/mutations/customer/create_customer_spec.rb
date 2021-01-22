@@ -13,7 +13,6 @@ RSpec.describe Mutations::Customer::CreateCustomer, type: :request do
     end
 
     it 'returns customer data' do
-      binding.pry
       data = json_response('createCustomer')
 
       expect(data).to include(
