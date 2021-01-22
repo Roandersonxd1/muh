@@ -7,5 +7,6 @@ module Types
     field :fetch_item, resolver: Queries::Item::FetchItem
 
     field :fetch_customers, resolver: Queries::Customer::FetchCustomers
+    field :fetch_customer, resolver: Queries::Customer::FetchCustomer
   end
 end
