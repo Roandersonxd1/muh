@@ -10,10 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_06_150937) do
+ActiveRecord::Schema.define(version: 2021_01_22_181006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "name"], name: "index_categories_on_user_id_and_name", unique: true
+    t.index ["user_id"], name: "index_categories_on_user_id"
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.bigint "phone"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "email"], name: "index_customers_on_user_id_and_email", unique: true
+    t.index ["user_id", "name"], name: "index_customers_on_user_id_and_name", unique: true
+    t.index ["user_id", "phone"], name: "index_customers_on_user_id_and_phone", unique: true
+    t.index ["user_id"], name: "index_customers_on_user_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "item_type", null: false
+    t.string "description", null: false
+    t.decimal "purchase_price", null: false
+    t.decimal "sale_price", null: false
+    t.integer "user_id", null: false
+    t.integer "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["user_id", "name"], name: "index_items_on_user_id_and_name", unique: true
+    t.index ["user_id"], name: "index_items_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
