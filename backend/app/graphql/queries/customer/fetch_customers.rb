@@ -1,9 +1,6 @@
 module Queries::Customer
-  class FetchCustomers < Queries::BaseQuery
+  class FetchCustomers < Queries::Generic::FetchAllQuery
+    self.resource_class = Customer
     type [Types::Model::CustomerType], null: false
-
-    def resolve
-      Customer.where(user: current_user)
-    end
   end
 end
