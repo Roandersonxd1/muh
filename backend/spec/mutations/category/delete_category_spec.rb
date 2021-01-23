@@ -7,7 +7,7 @@ RSpec.describe Mutations::Category::DeleteCategory, type: :request do
 
   describe 'when data is valid' do
     before(:each) do
-      graphql_post(headers: user_headers, id: category.id)
+      graphql_post(headers: user_headers, params: { id: category.id })
     end
 
     it 'returns category data' do
@@ -27,7 +27,7 @@ RSpec.describe Mutations::Category::DeleteCategory, type: :request do
 
   describe 'when data is not valid' do
     before(:each) do
-      graphql_post(headers: user_headers, id: -1)
+      graphql_post(headers: user_headers, params: { id: -1 })
     end
 
     it { expect(json_response_error_message).to eq("Couldn't find Category") }
@@ -40,7 +40,7 @@ RSpec.describe Mutations::Category::DeleteCategory, type: :request do
     let!(:user_headers2) { header_for_user(user2) }
 
     before(:each) do
-      graphql_post(headers: user_headers2, id: category.id)
+      graphql_post(headers: user_headers2, params: { id: category.id })
     end
 
     it { expect(json_response_error_message).to eq("Couldn't find Category") }

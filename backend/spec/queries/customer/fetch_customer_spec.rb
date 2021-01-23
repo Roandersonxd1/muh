@@ -7,7 +7,7 @@ RSpec.describe Queries::Customer::FetchCustomers, type: :request do
 
   describe 'when data is valid' do
     before(:each) do
-      graphql_post(id: customer.id, headers: user_headers)
+      graphql_post(params: { id: customer.id }, headers: user_headers)
     end
 
     it 'returns customer data' do
@@ -25,7 +25,7 @@ RSpec.describe Queries::Customer::FetchCustomers, type: :request do
 
   describe 'when customer does not exist' do
     before(:each) do
-      graphql_post(id: -1, headers: user_headers)
+      graphql_post(params: { id: -1 }, headers: user_headers)
     end
 
     it 'returns not found message' do
@@ -40,7 +40,7 @@ RSpec.describe Queries::Customer::FetchCustomers, type: :request do
     let!(:user_headers2) { header_for_user(user2) }
 
     before(:each) do
-      graphql_post(id: customer.id, headers: user_headers2)
+      graphql_post(params: { id: customer.id }, headers: user_headers2)
     end
 
     it 'returns not found message' do

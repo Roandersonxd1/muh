@@ -10,7 +10,7 @@ RSpec.describe Mutations::Customer::UpdateCustomer, type: :request do
 
   describe 'when data is valid' do
     before(:each) do
-      graphql_post(headers: user_headers, name: name, phone: phone, email: email, id: customer.id)
+      graphql_post(headers: user_headers, params: { name: name, phone: phone, email: email, id: customer.id })
     end
 
     it 'returns customer data' do
@@ -27,7 +27,7 @@ RSpec.describe Mutations::Customer::UpdateCustomer, type: :request do
 
   describe 'when customer name is not valid' do
     before(:each) do
-      graphql_post(headers: user_headers, name: '', phone: phone, email: email, id: customer.id)
+      graphql_post(headers: user_headers, params: { name: '', phone: phone, email: email, id: customer.id })
     end
 
     it { expect(json_response_error_message).to eq("Validation failed: Name can't be blank") }
@@ -37,7 +37,7 @@ RSpec.describe Mutations::Customer::UpdateCustomer, type: :request do
 
   describe 'when customer is not found' do
     before(:each) do
-      graphql_post(headers: user_headers, name: '', phone: phone, email: email, id: -1)
+      graphql_post(headers: user_headers, params: {  name: '', phone: phone, email: email, id: -1 })
     end
 
     it { expect(json_response_error_message).to eq("Couldn't find Customer") }
@@ -48,7 +48,7 @@ RSpec.describe Mutations::Customer::UpdateCustomer, type: :request do
     let!(:user_headers2) { header_for_user(user2) }
 
     before(:each) do
-      graphql_post(headers: user_headers2, name: name, phone: phone, email: email, id: customer.id)
+      graphql_post(headers: user_headers2, params: { name: name, phone: phone, email: email, id: customer.id })
     end
 
     it { expect(json_response_error_message).to eq("Couldn't find Customer") }

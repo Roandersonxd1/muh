@@ -9,7 +9,7 @@ RSpec.describe Mutations::Customer::CreateCustomer, type: :request do
 
   describe 'when data is valid' do
     before(:each) do
-      graphql_post(headers: user_headers, name: name, phone: phone, email: email)
+      graphql_post(headers: user_headers, params: { name: name, phone: phone, email: email })
     end
 
     it 'returns customer data' do
@@ -28,7 +28,7 @@ RSpec.describe Mutations::Customer::CreateCustomer, type: :request do
     let(:invalid_name) { '' }
 
     before(:each) do
-      graphql_post(headers: user_headers, name: invalid_name, phone: phone, email: email)
+      graphql_post(headers: user_headers, params: { name: invalid_name, phone: phone, email: email })
     end
 
     it 'returns customer data' do

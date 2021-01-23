@@ -7,7 +7,7 @@ RSpec.describe Mutations::Customer::DeleteCustomer, type: :request do
 
   describe 'when data is valid' do
     before(:each) do
-      graphql_post(headers: user_headers, id: customer.id)
+      graphql_post(headers: user_headers, params: { id: customer.id })
     end
 
     it 'returns customer data' do
@@ -26,7 +26,7 @@ RSpec.describe Mutations::Customer::DeleteCustomer, type: :request do
 
   describe 'when data is not valid' do
     before(:each) do
-      graphql_post(headers: user_headers, id: -1)
+      graphql_post(headers: user_headers, params: { id: -1 })
     end
 
     it { expect(json_response_error_message).to eq("Couldn't find Customer") }
@@ -39,7 +39,7 @@ RSpec.describe Mutations::Customer::DeleteCustomer, type: :request do
     let!(:user_headers2) { header_for_user(user2) }
 
     before(:each) do
-      graphql_post(headers: user_headers2, id: customer.id)
+      graphql_post(headers: user_headers2, params: { id: customer.id })
     end
 
     it { expect(json_response_error_message).to eq("Couldn't find Customer") }

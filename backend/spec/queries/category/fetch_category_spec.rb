@@ -7,7 +7,7 @@ RSpec.describe Queries::Category::FetchCategories, type: :request do
 
   describe 'when data is valid' do
     before(:each) do
-      graphql_post(id: category.id, headers: user_headers)
+      graphql_post(params: { id: category.id }, headers: user_headers)
     end
 
     it 'returns category data' do
@@ -24,7 +24,7 @@ RSpec.describe Queries::Category::FetchCategories, type: :request do
 
   describe 'when category does not exist' do
     before(:each) do
-      graphql_post(id: -1, headers: user_headers)
+      graphql_post(params: { id: -1 }, headers: user_headers)
     end
 
     it 'returns not found message' do
@@ -39,7 +39,7 @@ RSpec.describe Queries::Category::FetchCategories, type: :request do
     let!(:user_headers2) { header_for_user(user2) }
 
     before(:each) do
-      graphql_post(id: category.id, headers: user_headers2)
+      graphql_post(params: { id: category.id }, headers: user_headers2)
     end
 
     it 'returns not found message' do
