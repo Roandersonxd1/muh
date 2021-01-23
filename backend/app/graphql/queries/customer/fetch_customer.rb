@@ -1,11 +1,6 @@
 module Queries::Customer
-  class FetchCustomer < Queries::BaseQuery
-    argument :id, ID, required: true
-
+  class FetchCustomer < Queries::Generic::FetchQuery
+    self.resource_class = Customer
     type Types::Model::CustomerType, null: false
-
-    def resolve(id:)
-      Customer.find_by!(id: id, user: current_user)
-    end
   end
 end
