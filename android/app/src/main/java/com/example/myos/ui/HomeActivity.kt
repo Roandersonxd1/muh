@@ -24,7 +24,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 
-
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -35,28 +34,26 @@ class HomeActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-
         val apolloClient = ApolloClient.builder()
             .serverUrl("http://muhos.herokuapp.com/graphql")
             .build()
 
         Logger.addLogAdapter(AndroidLogAdapter())
 
-        val upvotePostMutation = CreateUserMutation(email = "Roandersonfelipe123458@gmail.com",password = "12345678")
+        val upvotePostMutation = CreateUserMutation(email = "Roandersonfelipe123458@gmail.com", password = "12345678")
 
         Network.getApolloClient(this)
             ?.mutate(upvotePostMutation)
-            ?.enqueue(object: ApolloCall.Callback<CreateUserMutation.Data>() {
+            ?.enqueue(object : ApolloCall.Callback<CreateUserMutation.Data>() {
                 override fun onResponse(response: Response<CreateUserMutation.Data>) {
-                    Log.i("SUCESSO", response.toString());
+                    Log.i("SUCESSO", response.toString())
                 }
 
                 override fun onFailure(e: ApolloException) {
-                    Log.e("ERRO", e.message, e);
+                    Log.e("ERRO", e.message, e)
                 }
             }
             )
-
 
 //
 //        apolloClient
@@ -72,9 +69,6 @@ class HomeActivity : AppCompatActivity() {
 //
 //            }
 //            )
-
-
-
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
@@ -107,6 +101,4 @@ class HomeActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
-
-
 }

@@ -14,8 +14,8 @@ object Network {
     @JvmStatic
     fun getApolloClient(context: Context): ApolloClient? {
 
-        //If Apollo Client is not null, return it else make a new Apollo Client.
-        //Helps in singleton pattern.
+        // If Apollo Client is not null, return it else make a new Apollo Client.
+        // Helps in singleton pattern.
         apClient?.let {
             return it
         } ?: kotlin.run {
@@ -33,7 +33,7 @@ object Network {
             return it
         } ?: kotlin.run {
             httpClient = OkHttpClient.Builder()
-                //Adding HttpLoggingInterceptor() to see the response body and the results.
+                // Adding HttpLoggingInterceptor() to see the response body and the results.
                 .addInterceptor(logging)
                 .build()
         }
