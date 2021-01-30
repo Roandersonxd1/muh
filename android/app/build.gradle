@@ -67,6 +67,8 @@ dependencies {
     implementation "com.apollographql.apollo:apollo-api:2.5.2"
     implementation "com.apollographql.apollo:apollo-normalized-cache-sqlite:2.5.2"
     implementation "com.apollographql.apollo:apollo-coroutines-support:2.5.2"
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
+    implementation 'com.orhanobut:logger:2.2.0'
 
 
     implementation 'javax.annotation:jsr250-api:1.0'

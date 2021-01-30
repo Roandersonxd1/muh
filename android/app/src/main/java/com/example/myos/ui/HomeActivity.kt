@@ -17,9 +17,12 @@ import com.apollographql.apollo.api.Response
 import com.apollographql.apollo.exception.ApolloException
 import com.example.CreateUserMutation
 import com.example.myos.R
+import com.example.myos.network.Network
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
+import com.orhanobut.logger.AndroidLogAdapter
+import com.orhanobut.logger.Logger
 
 
 class HomeActivity : AppCompatActivity() {
@@ -37,22 +40,38 @@ class HomeActivity : AppCompatActivity() {
             .serverUrl("http://muhos.herokuapp.com/graphql")
             .build()
 
+        Logger.addLogAdapter(AndroidLogAdapter())
 
-        val createUserMutation = CreateUserMutation(email = "\"" + "roandersonfelipeboi1@gmail.com" +
-                "\"", password = "\"" + "123456" + "\"")
+        val upvotePostMutation = CreateUserMutation(email = "Roandersonfelipe123458@gmail.com",password = "12345678")
 
-
-        apolloClient
-            .mutate(createUserMutation)
-            .enqueue(object: ApolloCall.Callback<CreateUserMutation.Data>() {
+        Network.getApolloClient(this)
+            ?.mutate(upvotePostMutation)
+            ?.enqueue(object: ApolloCall.Callback<CreateUserMutation.Data>() {
                 override fun onResponse(response: Response<CreateUserMutation.Data>) {
-                    response.errors?.get(0)?.message?.let { Log.i("sucesso", it) }
+                    Log.i("SUCESSO", response.toString());
                 }
+
                 override fun onFailure(e: ApolloException) {
-                    Log.e("falilure", e.message.toString(), e);
+                    Log.e("ERRO", e.message, e);
                 }
             }
             )
+
+
+//
+//        apolloClient
+//            .mutate(createUserMutation.)
+//            .enqueue(object: ApolloCall.Callback<CreateUserMutation.Data>() {
+//                override fun onResponse(response: Response<CreateUserMutation.Data>) {
+//                    response.errors?.get(0)?.message?.let { Log.i("sucesso", it) }
+//                }
+//                override fun onFailure(e: ApolloException) {
+//                   Logger.d(e.localizedMessage?:"Error)
+//
+//                }
+//
+//            }
+//            )
 
 
 
@@ -88,4 +107,6 @@ class HomeActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+
 }
